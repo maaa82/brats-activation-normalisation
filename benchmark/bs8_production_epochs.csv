@@ -1,0 +1,11 @@
+model,fold,n_epochs,epoch_s_median,epoch_s_mean,gpu_hours
+BN_LeakyReLU_bs8,0,536,52.1,52.0,7.74
+BN_LeakyReLU_bs8,1,536,52.0,52.2,7.77
+BN_LeakyReLU_bs8,2,536,52.1,52.1,7.76
+BN_LeakyReLU_bs8,3,535,52.1,52.1,7.74
+BN_LeakyReLU_bs8,4,536,52.1,52.2,7.77
+GN_LeakyReLU_bs8,0,500,50.4,50.1,6.97
+GN_LeakyReLU_bs8,1,500,50.0,50.2,6.97
+GN_LeakyReLU_bs8,2,500,50.3,50.1,6.95
+GN_LeakyReLU_bs8,3,500,50.5,50.2,6.98
+GN_LeakyReLU_bs8,4,500,50.0,50.2,6.98
