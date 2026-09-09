@@ -14,11 +14,9 @@ the trainer definitions, the per-case metric files, the fold splits, the
 training-cost benchmark and the analysis notebooks; it does not contain imaging
 data or model weights.
 
-- **Paper (this study):** *Activation function × normalisation strategy
-  in nnU-Net for BraTS 2023 brain tumour segmentation*, IEEE Access,
-  manuscript Access-2026-30252 (under revision).
-  DOI: `10.xxxx/ACCESS.2026.xxxxxxx` *(placeholder — to be replaced on
-  acceptance)*
+- **Accompanying paper:** *Activation function × normalisation strategy in
+  nnU-Net for BraTS 2023 brain tumour segmentation* — in review. The citation
+  and DOI will be added here on publication.
 - **Companion paper (published):** *Informatics* 2026,
   [doi:10.3390/informatics13070118](https://doi.org/10.3390/informatics13070118).
   That earlier study screens activation functions on a custom U-Net; its code

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this code or these results, please cite the manuscript below."
+message: "If you use this code or these results, please cite it as below."
 title: "Activation function x normalisation strategy in nnU-Net for BraTS 2023 brain tumour segmentation"
 abstract: >-
   Code, per-case validation metrics and training-cost benchmarks for a factorial
@@ -12,13 +12,3 @@ authors:
 type: software
 license: MIT
 repository-code: "https://github.com/maaa82/brats-activation-normalisation"
-preferred-citation:
-  type: article
-  title: "Activation function x normalisation strategy in nnU-Net for BraTS 2023 brain tumour segmentation"
-  authors:
-    - family-names: Ahmed
-      given-names: "Mohamed A. A."
-  journal: "IEEE Access"
-  year: 2026
-  notes: "Manuscript Access-2026-30252, under revision."
-  doi: "10.xxxx/ACCESS.2026.xxxxxxx"
