@@ -1,0 +1,14 @@
+activation,batch,n_epochs,median_all_s,median_steady_s,p25_s,p75_s,wallclock_h,log_title
+LeakyReLU,apr_may,376,69.16,69.68,67.83,72.23,6.56,training_log_2026_4_19_10_30_35.txt
+ReLU,apr_may,373,68.97,69.19,67.33,71.67,6.52,training_log_2026_4_19_10_36_06.txt
+Swish,apr_may,374,68.67,68.90,67.23,71.23,6.51,training_log_2026_4_19_10_34_48.txt
+TanhExp,apr_may,373,68.95,69.49,67.45,71.45,6.50,training_log_2026_4_19_10_35_12.txt
+PReLU,apr_may,372,69.22,69.57,67.61,72.12,6.52,training_log_2026_4_19_10_35_31.txt
+ReLU,jul,500,80.78,79.44,77.32,81.49,12.15,training_log_2026_7_27_18_16_14.txt
+ELiSH,jul,500,77.42,77.56,74.53,81.56,11.49,training_log_2026_7_29_17_27_03.txt
+Mish,jul,500,80.21,80.41,77.19,83.41,11.39,training_log_2026_7_29_18_32_38.txt
+HardELiSH,jul,500,82.15,83.20,79.89,88.00,11.95,training_log_2026_7_29_17_18_41.txt
+GELU,jul,500,78.64,78.66,76.29,81.26,11.26,training_log_2026_7_29_18_33_58.txt
+ELU,jul,500,79.61,79.97,77.49,83.99,11.59,training_log_2026_7_29_17_51_36.txt
+Logish,jul,500,77.80,76.97,74.88,78.84,11.64,training_log_2026_7_27_16_46_20.txt
+Smish,jul,500,80.84,79.50,77.10,82.20,11.99,training_log_2026_7_27_16_47_00.txt

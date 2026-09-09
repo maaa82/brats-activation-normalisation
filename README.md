@@ -21,8 +21,16 @@ data or model weights.
   and DOI will be added here on publication.
 - **Companion paper (published):** *Informatics* 2026,
   [doi:10.3390/informatics13070118](https://doi.org/10.3390/informatics13070118).
-  That earlier study screens activation functions on a custom U-Net; its code
-  and results live with that paper and are not reproduced here.
+  That earlier study screens activation functions on a residual 3D U-Net
+  (BraTS 2020) at a fixed normalisation. Its code and full results live with
+  that paper; only the normalisation cells that are new to the present work are
+  archived here, in `results/armA_normalisation/`.
+
+**Arm A and Arm B.** The two experiments are referred to throughout by these
+short names. **Arm A** is the residual 3D U-Net on BraTS 2020 — the
+architecture of the companion paper. **Arm B** is nnU-Net on BraTS 2023, the
+main subject of this repository. Everything outside
+`results/armA_normalisation/` and the `armA_*` analysis scripts is Arm B.
 
 ---
 
@@ -211,8 +219,10 @@ CITATION.cff
 environment.md               exact versions
 trainers/                    nnU-Net trainer definitions
 benchmark/                   training-cost benchmark outputs and parser
-results/synapse_per_case/    per-case official BraTS metrics, one CSV per model
-results/splits_final.json    5-fold split used by every cell
+results/synapse_per_case/    per-case official BraTS metrics, one CSV per model (Arm B)
+results/splits_final.json    5-fold split used by every Arm B cell
+results/armA_normalisation/  per-patient and summary metrics for the Arm A
+                             normalisation cells (see section 5.1)
 notebooks/                   inference / submission / failure-case notebooks
 figures/
 analysis/                    analysis scripts (see analysis/README.md)
@@ -285,6 +295,41 @@ released. Per-file details are in
 
 ---
 
+### 5.1 Arm A normalisation cells
+
+`results/armA_normalisation/` holds the normalisation × activation results for
+**Arm A** — the residual 3D U-Net on **BraTS 2020**, evaluated on a fixed
+73-case validation split. These are a different architecture, dataset and
+evaluation protocol from the Arm B files above, and the two must not be pooled.
+
+The design is three normalisation strategies — Instance Norm (IN), Batch Norm
+(BN) and Group Norm (GN) — crossed with five activations (LeakyReLU, ReLU,
+PReLU, Swish, TanhExp), 15 cells in total. **The Batch Norm cells are those of
+the published companion study; the Instance Norm and Group Norm cells are new
+to the present work.**
+
+Seeds are uneven, by design rather than oversight, and the summary files record
+this explicitly in `n_seeds`:
+
+| Configuration | Seeds |
+|---|---|
+| BN × 5 activations | 42, 1337, 2025 (three seeds each) |
+| IN × 5 activations | 2025 |
+| GN × 5 activations | 2025, plus 1337 for GN + TanhExp |
+
+| File | Contents |
+|---|---|
+| `raw_predictions_norm.csv` | Per-patient metrics, 803 rows = 11 cells × 73 patients. Covers the **IN and GN cells only** — the per-patient outputs for the BN cells belong to the published companion study. Columns are Dice, HD95, sensitivity and precision for each of NCR, ED, ET, TC and WT, keyed by `Norm`, `Activation`, `Seed`, `Patient`. |
+| `per_seed_summary_norm.csv` | One row per (norm, activation, seed): 26 rows. |
+| `across_seed_summary_norm.csv` | One row per (norm, activation): 15 rows, with `n_seeds` and the across-seed mean and SD. Read `n_seeds` before comparing cells — a single-seed mean and a three-seed mean are not the same quantity. |
+
+Note the region set differs from Arm B: Arm A reports the five regions NCR, ED,
+ET, TC and WT with conventional per-case metrics, whereas the Arm B files carry
+the three composite regions under the official BraTS 2023 lesion-wise protocol.
+
+`analysis/armA_norm_analysis.py` produces the paired statistics for these cells
+(`analysis/armA_norm_stats.csv`).
+
 ## 6. Training-cost benchmark
 
 `benchmark/` holds two independent cost measurements.
@@ -313,7 +358,10 @@ tracks the real per-epoch peak closely enough to serve as a proxy for it.
 `vram_IN_batch2.csv` is the Instance-Norm batch-2 grid, `vram_grid_batch2.csv`
 and `vram_grid_batch8.csv` the full norm × activation grids at each batch size.
 `bs8_production_epochs.csv` holds the measured epoch times of the production
-batch-8 runs, and `gpu.txt` records the GPU the benchmark ran on.
+batch-8 runs, `production_epoch_times_IN.csv` the median steady-state epoch
+times of the production Instance-Norm runs read from the archived training logs
+(these, not the contended benchmark figures, are the ones to quote for real
+per-fold cost), and `gpu.txt` records the GPU the benchmark ran on.
 
 The two measurements answer different questions and will not agree in absolute
 terms: `bench12` is the whole training process under production-like
