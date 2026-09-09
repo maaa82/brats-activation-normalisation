@@ -1,5 +1,7 @@
 # Activation function × normalisation strategy in nnU-Net for BraTS 2023
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22675020.svg)](https://doi.org/10.5281/zenodo.22675020)
+
 Code and per-case results for a factorial study of **activation functions ×
 normalisation strategies** in nnU-Net on the BraTS 2023 adult glioma cohort.
 The study trains nnU-Net's default `PlainConvUNet` under three normalisation
@@ -343,7 +345,12 @@ If you use the data, cite:
 ## 8. Trained checkpoints
 
 Model weights are not in this repository. Trained checkpoints are **available on
-request from the corresponding author; a Zenodo archive is planned.**
+request from the corresponding author.**
+
+The code and results in this repository are archived on Zenodo:
+**[10.5281/zenodo.22675020](https://doi.org/10.5281/zenodo.22675020)** — this
+DOI always resolves to the latest version. To cite the exact snapshot released
+as `v1.0`, use [10.5281/zenodo.22675021](https://doi.org/10.5281/zenodo.22675021).
 
 ---
 
